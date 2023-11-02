@@ -103,7 +103,7 @@ Copyright <script>document.write(new Date().getFullYear());</script> All rights 
 											<div class="desc">
 												<h1>Hi! <br>I'm JOHNBOSCO</h1>
 												<h2>Software Developer </h2>
-												<p><a class="btn btn-primary btn-learn">Download CV <i class="icon-download4"></i></a></p>
+												<p><a class="btn btn-primary btn-learn" href="cv/Ezekwe Johnbosco Chukwuka.pdf">Download CV <i class="icon-download4"></i></a></p>
 											</div>
 										</div>
 									</div>
@@ -729,19 +729,19 @@ Copyright <script>document.write(new Date().getFullYear());</script> All rights 
 								<div class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box" data-animate-effect="fadeInRight">
 									<form action="">
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Name">
+											<input type="text" id="contact_email_name" class="form-control" placeholder="Name">
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Email">
+											<input type="text" id="contact_email_email" class="form-control" placeholder="Email">
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Subject">
+											<input type="text" id="contact_email_subject" class="form-control" placeholder="Subject">
 										</div>
 										<div class="form-group">
-											<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+											<textarea id="contact_email_message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
 										</div>
 										<div class="form-group">
-											<input type="submit" class="btn btn-primary btn-send-message" value="Send Message">
+											<input type="button" onclick="openMailApp()" class="btn btn-primary btn-send-message" value="Send Message">
 										</div>
 									</form>
 								</div>
@@ -774,6 +774,29 @@ Copyright <script>document.write(new Date().getFullYear());</script> All rights 
 	
 	<!-- MAIN JS -->
 	<script src="js/main.js"></script>
+
+	<script>
+		function openMailApp() {
+			const to = 'multiplechuks@gmail.com';
+			const cc = 'multiplechuks@yahoo.com';
+			const subject = $('#contact_email_subject').val();
+			const message = $('#contact_email_message').val();
+			const name = $('#contact_email_name').val();
+			const email = $('#contact_email_email').val();
+
+			const encodedTo = encodeURIComponent(to);
+			const encodedCC = encodeURIComponent(cc);
+			const encodedSubject = encodeURIComponent(subject);
+			const encodedMessage = encodeURIComponent(message);
+			const encodedName = encodeURIComponent(name);
+			const encodedEmail = encodeURIComponent(email);
+
+			//const mailtoLink = `mailto:${encodedTo}?cc=${encodedCC}&subject=${encodedSubject}&body=${encodedMessage}<br/>${encodedName} [${encodedEmail}]`;
+			const mailtoLink = `mailto:${encodedTo}?subject=${encodedSubject}&body=${encodedMessage}`;
+
+			window.location.href = mailtoLink;
+		}
+	</script>
 
 	</body>
 </html>
